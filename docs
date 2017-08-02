@@ -1,1 +1,12 @@
 
+## Using PowerShell
+
+	- Convert to using AHUB
+		$vm = Get-AzureRmVM -ResourceGroup "testhub" -Name "testhub12r2"
+		$vm.LicenseType = "Windows_Server"
+		Update-AzureRmVM -ResourceGroupName testhub -VM $vm
+    
+	- Convert back to pay as you go
+		$vm = Get-AzureRmVM -ResourceGroup "testhub" -Name "testhub12r2"
+		$vm.LicenseType = ""
+		Update-AzureRmVM -ResourceGroupName testhub -VM $vm
