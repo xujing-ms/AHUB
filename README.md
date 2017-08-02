@@ -20,3 +20,70 @@ Provides ability for customers to use their existing (or future) on-premises Win
 		$vm.LicenseType = ""
 		Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
 ```
+
+## REST API
+
+```json
+PUT
+https://management.azure.com/subscriptions/<subId>/resourceGroups/<rg-name>/providers/Microsoft.Compute/virtualMachin
+es/<vm-nam>?api-version=2016-04-30-preview
+
+Headers:
+x-ms-client-request-id        : <>
+accept-language               : en-US
+```
+Body:
+```json
+{
+  "properties": {
+    "hardwareProfile": {
+      "vmSize": "Standard_A1"
+    },
+    "storageProfile": {
+      "imageReference": {
+        "publisher": "MicrosoftWindowsServer",
+        "offer": "WindowsServer",
+        "sku": "2012-R2-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "osType": "Windows",
+        "name": "<disk-name>",
+        "caching": "ReadWrite",
+        "createOption": "fromImage",
+        "diskSizeGB": 128,
+        "managedDisk": {
+          "storageAccountType": "Standard_LRS",
+          "id": "/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Compute/disks/<disk-name>"
+        }
+      },
+      "dataDisks": []
+    },
+    "osProfile": {
+      "computerName": "<vm-name>",
+      "adminUsername": "<username>",
+      "windowsConfiguration": {
+        "provisionVMAgent": true,
+        "enableAutomaticUpdates": true
+      },
+      "secrets": []
+    },
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/<subId>/resourceGroups/<rg-name>/providers/Microsoft.Network/networkInterfaces/<nic>"
+        }
+      ]
+    },
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "https://<storagename>.blob.core.windows.net/"
+      }
+    },
+    "licenseType": "Windows_Server"
+  },
+  "location": "<region>",
+  "tags": {}
+}
+```
