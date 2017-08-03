@@ -87,3 +87,8 @@ Body:
   "tags": {}
 }
 ```
+## Azure CLI
+
+```
+az vm update -g <rg-name> -n <vm-name> --set LicenseType="Windows_Server"
+```
