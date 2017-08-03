@@ -90,5 +90,5 @@ Body:
 ## Azure CLI
 
 ```
-az vm update -g <rg-name> -n <vm-name> --set LicenseType="Windows_Server"
+az vm update -n <vm-name> -g <rg-name> --set LicenseType="Windows_Server"
 ```
