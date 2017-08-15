@@ -20,6 +20,11 @@ Provides ability for customers to use their existing (or future) on-premises Win
 		$vm.LicenseType = ""
 		Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
 ```
+## Azure CLI
+
+```
+az vm update -n <vm-name> -g <rg-name> --set LicenseType="Windows_Server"
+```
 
 ## REST API
 
@@ -87,8 +92,4 @@ Body:
   "tags": {}
 }
 ```
-## Azure CLI
 
-```
-az vm update -n <vm-name> -g <rg-name> --set LicenseType="Windows_Server"
-```
