@@ -25,6 +25,8 @@ Provides ability for customers to use their existing (or future) on-premises Win
 ```
 az vm update -n <vm-name> -g <rg-name> --set LicenseType="Windows_Server"
 ```
+## Portal
+*** Coming future ***
 
 ## REST API
 
