@@ -17,7 +17,7 @@ Provides ability for customers to use their existing (or future) on-premises Win
 ### Convert back to pay as you go
 ```powershell
 		$vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
-		$vm.LicenseType = ""
+		$vm.LicenseType = "None"
 		Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
 ```
 ## Azure CLI
