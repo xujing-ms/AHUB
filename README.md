@@ -28,6 +28,25 @@ az vm update -n <vm-name> -g <rg-name> --set LicenseType="Windows_Server"
 ## Portal
 *** Coming future ***
 
+## ARM Template
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "apiVersion": "2017-03-30",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "<vm-name>",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "licenseType": "Windows_Server"
+            }
+        }
+    ]
+}
+```
+
 ## REST API
 
 ```json
